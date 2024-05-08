@@ -13,6 +13,17 @@ function get_users(){
     return $users;
 }
 
+function get_user(string $username){
+    $bdd = new BDD;
+    $bdd = $bdd->get_bdd();
+
+    $select = $bdd->prepare("SELECT * FROM user WHERE username = ?");
+    $select->execute([$username]);
+    $user = $select->fetch();
+
+    return $user;
+}
+
 function test_login(string $username, string $password){
     $bdd = new BDD;
     $bdd = $bdd->get_bdd();
@@ -28,6 +39,11 @@ function test_login(string $username, string $password){
 }
 
 function check_username(string $username){
+    $users = get_users();
+    foreach($users as $user){
+        if ($username === $user['username']){return false;}
+    }
+
     return preg_match("/^[a-zA-Z0-9_-]+$/", $username);
 }
 
@@ -37,11 +53,13 @@ function create_account(string $username, string $password, string $email){
 
     $column = "";
     $value = "";
-    if ($email === ""){
+    if ($email != ""){
         $column = ", email";
         $value = ", ?";
     }
 
     $insert = $bdd->prepare("INSERT INTO user (username, `password`$column) VALUES (?, ?$value);");
-    $insert->execute([$username, password_hash($password, PASSWORD_BCRYPT), $email]);
+    $parameters = [$username, password_hash($password, PASSWORD_BCRYPT)];
+    if ($email != ""){array_push($parameters, $email);}
+    $insert->execute($parameters);
 }

@@ -6,6 +6,7 @@
             $email = "";
             if (isset($_POST['email'])){ $email = $_POST['email']; }
             create_account($_POST['username'], $_POST['password'], $email);
+            header("Location: ../index.php");
         } else {
             $message = "Nom d'utilisateur invalide";
         }
@@ -19,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects Manager | Créer un compte</title>
     <link rel="stylesheet" href="../styles/create-account.css">
+    <script src="https://kit.fontawesome.com/ebeaba6256.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="container-border">
@@ -27,15 +29,26 @@
             <?php if(isset($message)){echo "<span class=\"error\">$message</span>";} ?>
             <form action="create-account.php" method="post">
                 <label for="username">Identifiant :</label>
-                <input type="text" name="username" id="username" placeholder="Identifiant" required>
+                <span id="username-span">
+                    <input type="text" name="username" id="username" placeholder="Identifiant" required>
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
                 <label for="password">Mot de passe :</label>
-                <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                <span id="password-span">
+                    <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
                 <label for="password">Adresse email :</label>
-                <input type="email" name="email" id="email" placeholder="Adresse email">
+                <span id="email-span">
+                    <input type="email" name="email" id="email" placeholder="Adresse email">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
                 <button>Créer un compte</button>
             </form>
             <small>Vous avez déjà un compte ?<br><a href="../index.php">Connectez</a>-vous ici !</small>
         </div>
     </div>
+
+    <script src="../scripts/create-account.js"></script>
 </body>
 </html>
