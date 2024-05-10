@@ -2,13 +2,17 @@
     require_once "ressources/fonctions.php";
     session_start();
 
+    if (isset($_GET['logout'])){
+        session_destroy();
+    }
+
     if (isset($_SESSION['user'])){
-        header('Location: pages/test.php');
+        header('Location: pages/dashboard.php');
     }
 
     if (isset($_POST['username']) && isset($_POST['password']) && test_login($_POST['username'], $_POST['password'])){
         $_SESSION['user'] = get_user($_POST['username']);
-        header('Location: pages/test.php');
+        header('Location: pages/dashboard.php');
     }
 ?>
 
