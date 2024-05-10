@@ -13,7 +13,7 @@ echo "test ok";
     <link rel="stylesheet" href="../styles/dashboard.css">
 </head>
 <body>
-    <form action="index.php" method="get">
+    <form action="../index.php" method="get">
         <button name="logout">Se déconnecter</button>
     </form>
 </body>
