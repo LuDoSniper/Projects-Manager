@@ -12,8 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects Manager | Dashboard</title>
-    <link rel="stylesheet" href="../styles/dashboard.css">
+    <title>Projects Manager | Gestion du compte</title>
+    <link rel="stylesheet" href="../styles/account-manager.css">
     <script src="https://kit.fontawesome.com/ebeaba6256.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -47,11 +47,10 @@
                 <span>adresse.mail@domaine.web</span>
             </div>
         </div>
-        <a href="account-manager.php" target="_blank">Gérer le compte</a>
         <div class="line"></div>
         <a href="../index.php?logout">Se déconnecter</a>
     </div>
 
-    <script src="../scripts/dashboard.js"></script>
+    <script src="../scripts/account-manager.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-require_once "bdd.php";
+require_once "bdd_real_local.php";
 
 function get_users(){
     $bdd = new BDD;
